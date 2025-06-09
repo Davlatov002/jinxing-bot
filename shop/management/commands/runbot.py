@@ -76,9 +76,8 @@ def get_user_phone(message):
             user = User.objects.create(
                 username=data['name'],
                 user_telegram_id=user_id,
-                first_name=message.from_user.first_name,
+                first_name=message.from_user.username,
                 last_name=message.from_user.last_name,
-                telegram_username=message.from_user.username,
                 phone_number=message.text
             )
             user.save()
