@@ -1,0 +1,42 @@
+# This file is distributed under the same license as the Django package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Django\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-09 18:48+0500\n"
+"PO-Revision-Date: 2010-05-13 15:35+0200\n"
+"Last-Translator: Django team\n"
+"Language-Team: English <en@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\user\models.py:7 .\user\models.py:9
+msgid "First name"
+msgstr ""
+
+#: .\user\models.py:8
+msgid "Telegram ID"
+msgstr ""
+
+#: .\user\models.py:10
+msgid "Last name"
+msgstr ""
+
+#: .\user\models.py:11
+msgid "Username"
+msgstr ""
+
+#: .\user\models.py:12
+msgid "Telegram username"
+msgstr ""
+
+#: .\user\models.py:13
+msgid "Phone number"
+msgstr ""
+
+#: .\user\models.py:14
+msgid "Created at"
+msgstr ""

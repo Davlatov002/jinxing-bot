@@ -1,0 +1,474 @@
+#: .\user\models.py:7 .\user\models.py:9
+msgid "First name"
+msgstr "Ism"
+
+#: .\user\models.py:8
+msgid "Telegram ID"
+msgstr ""
+
+#: .\user\models.py:10
+msgid "Last name"
+msgstr "Familiya"
+
+#: .\user\models.py:11
+msgid "Username"
+msgstr "Foydalanuvchi nomi"
+
+#: .\user\models.py:12
+msgid "Telegram username"
+msgstr "Telegramdagi nomi"
+
+#: .\user\models.py:13
+msgid "Phone number"
+msgstr "Telefon raqami"
+
+#: .\user\models.py:14
+msgid "Created at"
+msgstr "Yaratilgan vaqti"
+
+#: .\user\models.py:17
+msgid "Foydalanuvchi"
+msgstr ""
+
+#: .\user\models.py:18
+msgid "Foydalanuvchilar"
+msgstr ""
+
+msgid "History"
+msgstr "Tarix"
+
+msgid "See Profile"
+msgstr "Profilni ko'rish"
+
+msgid "Add user"
+msgstr "Foydalanuvchi qo'shish"
+
+msgid "Welcome to our application"
+msgstr "Ilovamizga xush kelibsiz"
+
+msgid "Error: Something went wrong"
+msgstr "Xato: Nimadir noto'g'ri ketdi"
+
+msgid "Please enter your username"
+msgstr "Iltimos, foydalanuvchi nomingizni kiriting"
+
+msgid "Password"
+msgstr "Parol"
+
+msgid "Login"
+msgstr "Kirish"
+
+msgid "Logout"
+msgstr "Chiqish"
+
+msgid "Register"
+msgstr "Ro'yxatdan o'tish"
+
+msgid "Home"
+msgstr "Bosh sahifa"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Settings"
+msgstr "Sozlamalar"
+
+msgid "Save"
+msgstr "Saqlash"
+
+msgid "Cancel"
+msgstr "Bekor qilish"
+
+msgid "Search"
+msgstr "Qidirish"
+
+msgid "Submit"
+msgstr "Yuborish"
+
+msgid "Update"
+msgstr "Yangilash"
+
+msgid "Delete"
+msgstr "O'chirish"
+
+msgid "Success"
+msgstr "Muvaffaqiyat"
+
+msgid "Failed"
+msgstr "Muvaffaqiyatsizlik"
+
+msgid "Retry"
+msgstr "Qayta urinib ko'rish"
+
+msgid "Continue"
+msgstr "Davom ettirish"
+
+msgid "Previous"
+msgstr "Oldingi"
+
+msgid "Next"
+msgstr "Keyingi"
+
+msgid "Skip"
+msgstr "O'tkazib yuborish"
+
+msgid "Back"
+msgstr "Orqaga"
+
+msgid "Yes"
+msgstr "Ha"
+
+msgid "No"
+msgstr "Yo'q"
+
+msgid "Warning"
+msgstr "Ogohlantirish"
+
+msgid "Information"
+msgstr "Ma'lumot"
+
+msgid "Loading"
+msgstr "Yuklanmoqda"
+
+msgid "Please wait"
+msgstr "Iltimos, kuting"
+
+msgid "Apply"
+msgstr "Amalga oshirish"
+
+msgid "Terms of Service"
+msgstr "Xizmat shartlari"
+
+msgid "Privacy Policy"
+msgstr "Maxfiylik siyosati"
+
+msgid "About"
+msgstr "Haqqida"
+
+msgid "FAQ"
+msgstr "Tez-tez so'raladigan savollar"
+
+msgid "Contact"
+msgstr "Aloqa"
+
+msgid "Help"
+msgstr "Yordam"
+
+msgid "Logout successful"
+msgstr "Chiqish muvaffaqiyatli"
+
+msgid "Login successful"
+msgstr "Kirish muvaffaqiyatli"
+
+msgid "Account"
+msgstr "Hisob"
+
+msgid "Email"
+msgstr "Elektron pochta"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Address"
+msgstr "Manzil"
+
+msgid "Country"
+msgstr "Mamlakat"
+
+msgid "City"
+msgstr "Shahar"
+
+msgid "Zip Code"
+msgstr "Pochta indeksi"
+
+msgid "Order"
+msgstr "Buyurtma"
+
+msgid "Payment"
+msgstr "To'lov"
+
+msgid "Invoice"
+msgstr "Hisob-faktura"
+
+msgid "Shipping"
+msgstr "Yuborish"
+
+msgid "Billing"
+msgstr "Hisob-kitob"
+
+msgid "Total"
+msgstr "Jami"
+
+msgid "Quantity"
+msgstr "Miqdor"
+
+msgid "Price"
+msgstr "Narx"
+
+msgid "Discount"
+msgstr "Chegirma"
+
+msgid "Tax"
+msgstr "Soliq"
+
+msgid "Shipping Address"
+msgstr "Yetkazib berish manzili"
+
+msgid "Thank you for your order"
+msgstr "Buyurtmangiz uchun rahmat"
+
+msgid "Are you sure you want to delete this?"
+msgstr "Buni o'chirishga aminmisiz?"
+
+msgid "Your cart is empty"
+msgstr "Savatingiz bo'sh"
+
+msgid "Proceed to checkout"
+msgstr "To'lovni yakunlash"
+
+msgid "Invalid username or password"
+msgstr "Noto'g'ri foydalanuvchi nomi yoki parol"
+
+msgid "Account not found"
+msgstr "Hisob topilmadi"
+
+msgid "Password reset"
+msgstr "Parolni tiklash"
+
+msgid "Account created successfully"
+msgstr "Hisob muvaffaqiyatli yaratildi"
+
+msgid "Are you sure you want to log out?"
+msgstr "Chiqishga aminmisiz?"
+
+msgid "Your session has expired"
+msgstr "Sessiyangiz muddati tugadi"
+
+msgid "Session expired"
+msgstr "Sessiya muddati tugadi"
+
+msgid "Invalid email address"
+msgstr "Noto'g'ri elektron pochta manzili"
+
+msgid "New password"
+msgstr "Yangi parol"
+
+msgid "Confirm password"
+msgstr "Parolni tasdiqlang"
+
+msgid "Password changed successfully"
+msgstr "Parol muvaffaqiyatli o'zgartirildi"
+
+msgid "Please enter a valid email address"
+msgstr "Iltimos, to'g'ri elektron pochta manzilini kiriting"
+
+msgid "The email address is already registered"
+msgstr "Elektron pochta manzili allaqachon ro'yxatdan o'tgan"
+
+msgid "Please fill in all fields"
+msgstr "Iltimos, barcha maydonlarni to'ldiring"
+
+msgid "An error occurred, please try again"
+msgstr "Xato yuz berdi, iltimos, qaytadan urinib ko'ring"
+
+msgid "Password does not match"
+msgstr "Parollar mos kelmaydi"
+
+msgid "User not found"
+msgstr "Foydalanuvchi topilmadi"
+
+msgid "Unable to process your request"
+msgstr "So'rovni qayta ishlash imkoni yo'q"
+
+msgid "Account suspended"
+msgstr "Hisob mu temporarily cheklangan"
+
+msgid "Please verify your email"
+msgstr "Iltimos, elektron pochta manzilingizni tasdiqlang"
+
+msgid "Email verification"
+msgstr "Elektron pochta tasdiqlash"
+
+msgid "Your password has been reset"
+msgstr "Parolingiz tiklandi"
+
+msgid "Invalid request"
+msgstr "Noto'g'ri so'rov"
+
+msgid "Session timeout"
+msgstr "Sessiya tugadi"
+
+msgid "Profile updated successfully"
+msgstr "Profil muvaffaqiyatli yangilandi"
+
+msgid "Security question"
+msgstr "Xavfsizlik savoli"
+
+msgid "Answer"
+msgstr "Javob"
+
+msgid "Password recovery"
+msgstr "Parolni tiklash"
+
+msgid "Account deactivated"
+msgstr "Hisob o'chirilgan"
+
+msgid "Account activated"
+msgstr "Hisob faollashtirilgan"
+
+msgid "You are logged out"
+msgstr "Siz chiqdingiz"
+
+msgid "Please check your email for further instructions"
+msgstr "Qo'shimcha ko'rsatmalar uchun elektron pochtangizni tekshiring"
+
+msgid "Confirmation"
+msgstr "Tasdiqlash"
+
+msgid "Are you sure?"
+msgstr "Aminmisiz?"
+
+msgid "Go back to homepage"
+msgstr "Bosh sahifaga qaytish"
+
+msgid "Please enter a valid phone number"
+msgstr "Iltimos, to'g'ri telefon raqamini kiriting"
+
+msgid "Choose your country"
+msgstr "Mamlakatingizni tanlang"
+
+msgid "We sent you an email"
+msgstr "Biz sizga elektron pochta yubordik"
+
+msgid "You have successfully subscribed"
+msgstr "Siz muvaffaqiyatli obuna bo'ldingiz"
+
+msgid "Subscription failed"
+msgstr "Obuna bo'lishda xato"
+
+msgid "Account settings"
+msgstr "Hisob sozlamalari"
+
+msgid "Change language"
+msgstr "Tili o'zgartirish"
+
+msgid "Log in to continue"
+msgstr "Davom etish uchun kirish"
+
+msgid "Your account has been locked"
+msgstr "Hisobingiz bloklangan"
+
+msgid "Invalid code"
+msgstr "Noto'g'ri kod"
+
+msgid "Please enter the verification code"
+msgstr "Iltimos, tasdiqlash kodini kiriting"
+
+msgid "Transaction"
+msgstr "Tranzaksiya"
+
+msgid "Payment successful"
+msgstr "To'lov muvaffaqiyatli"
+
+msgid "Payment failed"
+msgstr "To'lov muvaffaqiyatsiz"
+
+msgid "Notification"
+msgstr "Bildirishnoma"
+
+msgid "Notifications"
+msgstr "Bildirishnomalar"
+
+msgid "Item"
+msgstr "Element"
+
+msgid "Price details"
+msgstr "Narx tafsilotlari"
+
+msgid "Checkout"
+msgstr "To'lovni yakunlash"
+
+msgid "Error occurred"
+msgstr "Xato yuz berdi"
+
+msgid "Verify email"
+msgstr "Elektron pochta tasdiqlash"
+
+msgid "Account verification"
+msgstr "Hisob tasdiqlash"
+
+msgid "Error code"
+msgstr "Xato kodi"
+
+msgid "Total amount"
+msgstr "Jami miqdor"
+
+msgid "Enter your details"
+msgstr "Ma'lumotlaringizni kiriting"
+
+msgid "Payment method"
+msgstr "To'lov usuli"
+
+msgid "Add to cart"
+msgstr "Savatchaga qo'shish"
+
+msgid "Remove from cart"
+msgstr "Savatchadan olib tashlash"
+
+msgid "No items in cart"
+msgstr "Savatchada hech narsa yo'q"
+
+msgid "Your order has been confirmed"
+msgstr "Buyurtmangiz tasdiqlandi"
+
+msgid "Tracking number"
+msgstr "Izlash raqami"
+
+msgid "Shipping status"
+msgstr "Yuborish holati"
+
+msgid "Delivery"
+msgstr "Yetkazib berish"
+
+msgid "Shipped"
+msgstr "Yuborilgan"
+
+msgid "Pending"
+msgstr "Kutish"
+
+msgid "Delivered"
+msgstr "Yetkazib berilgan"
+
+msgid "Order history"
+msgstr "Buyurtma tarixi"
+
+msgid "Update your profile"
+msgstr "Profilingizni yangilang"
+
+msgid "Profile updated"
+msgstr "Profil yangilandi"
+
+msgid "Change password"
+msgstr "Parolni o'zgartirish"
+
+msgid "Password change"
+msgstr "Parolni o'zgartirish"
+
+msgid "Security settings"
+msgstr "Xavfsizlik sozlamalari"
+
+msgid "Two-factor authentication"
+msgstr "Ikki faktorli autentifikatsiya"
+
+msgid "Enable"
+msgstr "Faollashtirish"
+
+msgid "Disable"
+msgstr "O'chirish"
+
+msgid "Submit request"
+msgstr "So'rov yuborish"
+
+msgid "Request received"
+msgstr "So'rov qabul qilindi"
+

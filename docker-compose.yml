@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: >
+      sh -c "
+        python3 manage.py migrate &&
+        python3 manage.py collectstatic --noinput &&
+        python3 manage.py runserver 0.0.0.0:8000"
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/web
+    depends_on:
+      - db
+    env_file:
+      - .env
+    networks:
+      - jinxing_bot
+
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=${DB_DATABASE}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "5433:5432"
+    networks:
+      - jinxing_bot
+
+  bot:
+    build:
+      context: .
+    command: python3 manage.py runbot
+    depends_on:
+      - web
+      - db
+    env_file:
+      - .env
+    networks:
+      - jinxing_bot
+
+volumes:
+  postgres_data:
+
+networks:
+  jinxing_bot:
