@@ -1,5 +1,5 @@
-
-from rest_framework import viewsets
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import viewsets, filters
 from .models import Category, Product, Order, OrderItem, ProductHistory
 from .serialazers import CategorySerializer, ProductSerializer, OrderSerializer, OrderItemSerializer, ProductHistorySerializer
 
@@ -9,8 +9,11 @@ class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
 
 class ProductViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().order_by('id')
     serializer_class = ProductSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ('category', 'price')
+    search_fields = ('name', 'sku')
 
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
