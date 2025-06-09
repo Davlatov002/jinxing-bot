@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     "drf_yasg",
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -98,12 +99,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://localhost:5005',
-    'http://localhost:5050',
-]
-
-CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:5005',
     'http://localhost:5050',
