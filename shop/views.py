@@ -13,7 +13,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all().order_by('id')
     serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    filterset_fields = ('category', 'price')
+    filterset_fields = ('category', )
     search_fields = ('name', 'sku')
     permission_classes = [permissions.IsAuthenticated]
 

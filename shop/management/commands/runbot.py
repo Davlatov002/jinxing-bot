@@ -47,7 +47,7 @@ def handle_inline_buttons(call):
     if call.data == 'support':
         menu_keyboard = types.InlineKeyboardMarkup(row_width=1)
         menu_keyboard.add(types.InlineKeyboardButton('⬅️ orqaga', callback_data="orqaga"))
-        bot.send_message(user_id, "Aloqa uchun:\n 📞 +998330232002 ; \nT/g: @davlatov02 ;", reply_markup=menu_keyboard)
+        bot.send_message(user_id, "Aloqa uchun:\n 📞 +998999774977 ; \nT/g: @davlatov02 ; \n Manzil https://www.google.com/maps/place//@41.00921,71.667123,15z/data=!4m6!1m5!3m4!2zNDHCsDAwJzMzLjIiTiA3McKwNDAnMDEuNiJF!8m2!3d41.00921!4d71.667123?hl=ru-RU&entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D ", reply_markup=menu_keyboard)
 
     elif call.data == 'orqaga':
         keyboard = types.InlineKeyboardMarkup(row_width=1)
@@ -74,10 +74,10 @@ def get_user_phone(message):
     if len(message.text) == 13 and message.text[:4] == "+998":
         if data:
             user = User.objects.create(
-                username=data['name'],
                 user_telegram_id=user_id,
-                first_name=message.from_user.username,
-                last_name=message.from_user.last_name,
+                first_name=data['name'],
+                last_name=message.from_user.first_name,
+                telegram_username=message.from_user.username,
                 phone_number=message.text
             )
             user.save()
