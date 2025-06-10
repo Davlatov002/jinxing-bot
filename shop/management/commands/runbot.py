@@ -51,7 +51,7 @@ def handle_inline_buttons(call):
 
     elif call.data == 'orqaga':
         keyboard = types.InlineKeyboardMarkup(row_width=1)
-        web_app_info = types.WebAppInfo(url="https://chatgpt.com")
+        web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app")
         buttons = [
             types.InlineKeyboardButton("🛒 Buyurtma berish", web_app=web_app_info),
             types.InlineKeyboardButton(" 📞 Bog'lanish", callback_data='support'),
