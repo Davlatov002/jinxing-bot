@@ -113,7 +113,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    'https://jinxinguz.netlify.app/',
     "https://jinxinguz.netlify.app",
     'http://localhost:3000',
     'http://localhost:5005',
