@@ -17,11 +17,6 @@ class ProductViewSet(viewsets.ModelViewSet):
     search_fields = ('name', 'sku')
     permission_classes = [permissions.IsAuthenticated]
 
-class OrderViewSet(viewsets.ModelViewSet):
-    queryset = Order.objects.all()
-    serializer_class = OrderSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
 class OrderItemViewSet(viewsets.ModelViewSet):
     queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
@@ -31,3 +26,9 @@ class ProductHistoryViewSet(viewsets.ModelViewSet):
     queryset = ProductHistory.objects.all()
     serializer_class = ProductHistorySerializer
     permission_classes = [permissions.IsAuthenticated]
+
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filterset_fields = ('user',)

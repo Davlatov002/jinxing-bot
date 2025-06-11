@@ -49,4 +49,4 @@ class OrderItem(models.Model):
 class Order(models.Model):
     total_price = models.FloatField(blank=True, null=True, verbose_name=_("Total price"))
     order_items = models.ManyToManyField(OrderItem, verbose_name=_("Order items"))
-    # user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("User"))
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("User"))

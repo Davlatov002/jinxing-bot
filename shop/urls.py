@@ -7,8 +7,8 @@ router = DefaultRouter()
 router.register(r'categories', CategoryViewSet)
 router.register(r'products', ProductViewSet)
 router.register(r'orders', OrderViewSet)
-router.register(r'product-history', ProductHistoryViewSet)
-router.register(r'order-items', OrderItemViewSet)
+# router.register(r'product-history', ProductHistoryViewSet)
+# router.register(r'order-items', OrderItemViewSet)
 
 
 urlpatterns = [

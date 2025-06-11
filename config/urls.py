@@ -18,6 +18,7 @@ from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.urls import path, include
 from django.contrib import admin
+from django.views.generic import TemplateView
 from rest_framework_simplejwt.views import TokenRefreshView
 from config import settings
 from config.swagger import urlpatterns as doc_urls
@@ -35,6 +36,7 @@ urlpatterns += i18n_patterns(
     path("api/", include('user.urls')),
     path('api/telegram-token/', TelegramTokenView.as_view(), name='telegram_token'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path("", TemplateView.as_view(template_name="frontend/index.html")),
 )
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
