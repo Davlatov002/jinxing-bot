@@ -1,9 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
-from rest_framework_simplejwt.tokens import RefreshToken
 from user.models import User
-from .serialazers import TelegramTokenSerializer
+from .serialazers import TelegramTokenSerializer, CustomTokenObtainPairSerializer
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.exceptions import ValidationError, NotFound
 
@@ -21,7 +20,7 @@ class TelegramTokenView(APIView):
         except User.DoesNotExist:
             raise ValidationError({"telegram_id": "Bunday telegram_id li foydalanuvchi mavjud emas"})
 
-        refresh = RefreshToken.for_user(user)
+        refresh = CustomTokenObtainPairSerializer.get_token(user)
 
         return Response({
             'access': str(refresh.access_token),

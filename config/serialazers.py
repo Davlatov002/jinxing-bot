@@ -13,9 +13,6 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
             raise serializers.ValidationError("Telegram ID yo‘q!")
 
         token = super().get_token(user)
+        token['id'] = user.id
         token['telegram_id'] = user.user_telegram_id
-        token['username'] = user.username
-        token['first_name'] = user.first_name
-        token['last_name'] = user.last_name
-
         return token
