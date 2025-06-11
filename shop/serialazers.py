@@ -24,7 +24,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class OrderSerializer(serializers.ModelSerializer):
-    order_items = OrderItemSerializer(many=True, write_only=True)   # faqat create/update paytida keladi
+    order_items = OrderItemSerializer(many=True)
 
     class Meta:
         model = Order
@@ -33,6 +33,8 @@ class OrderSerializer(serializers.ModelSerializer):
     @transaction.atomic
     def create(self, validated_data):
         items_data = validated_data.pop("order_items")
+        if not items_data:
+            raise serializers.ValidationError("No items")
         for item in items_data:
             product = item["product"]
             if item["quantity"] > product.count:
@@ -41,7 +43,7 @@ class OrderSerializer(serializers.ModelSerializer):
                 )
         order = Order.objects.create(**validated_data)
 
-        # total = 0
+        total = 0
         order_items = []
         for item in items_data:
             product  = item["product"]
@@ -51,12 +53,12 @@ class OrderSerializer(serializers.ModelSerializer):
             order_item = OrderItem.objects.create(
                 product  = product,
                 quantity = quantity,
-                price    = product.price,
+                price    = product.price * quantity,
             )
             order_items.append(order_item)
-            #
-            # total += product.price * quantity
+            total += product.price * quantity
         order.order_items.set(order_items)
+        order.total_price = total
         order.save()
 
         return order
