@@ -18,7 +18,15 @@ class ProductHistorySerializer(serializers.ModelSerializer):
         model = ProductHistory
         fields = '__all__'
 
+class GetProductSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Product
+        fields = ['name', 'image', 'price', 'sku']
+
 class OrderItemSerializer(serializers.ModelSerializer):
+    product = GetProductSerializer(read_only=True)
+
     class Meta:
         model = OrderItem
         fields = '__all__'
