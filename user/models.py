@@ -10,6 +10,7 @@ class User(AbstractUser):
     telegram_username = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Telegram username"))
     phone_number = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Phone number"))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Updated at"))
 
 
     class Meta:

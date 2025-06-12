@@ -6,6 +6,8 @@ from user.models import User
 class Category(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Category name"))
     image = models.ImageField(upload_to="category/", blank=True, null=True, verbose_name=_("Image"))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Updated at"))
 
     def __str__(self):
         return self.name
@@ -23,6 +25,8 @@ class Product(models.Model):
     count = models.IntegerField(blank=True, null=True, verbose_name=_("Product count"))
     image = models.ImageField(upload_to="product/", blank=True, null=True, verbose_name=_("Image"))
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name=_("Product category"))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Updated at"))
 
     def __str__(self):
         return self.name
@@ -38,6 +42,7 @@ class ProductHistory(models.Model):
     price = models.FloatField(blank=True, null=True, verbose_name=_("Product price"))
     sku = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Product SKU"))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Updated at"))
 
 
 class OrderItem(models.Model):
@@ -47,6 +52,19 @@ class OrderItem(models.Model):
 
 
 class Order(models.Model):
+    class Status(models.TextChoices):
+        JARAYONDA = 'jarayonda', _('Jarayonda')
+        TASDIQLANDI = 'tasdiqlandi', _('Tasdiqlandi')
+        BEKOR_QILINDI = 'bekor qilindi', _('Bekor qilindi')
+        YETKAZILDI = 'yetkazildi', _('Yetkazildi')
+
     total_price = models.FloatField(blank=True, null=True, verbose_name=_("Total price"))
     order_items = models.ManyToManyField(OrderItem, verbose_name=_("Order items"))
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("User"))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
+    status = models.CharField(
+        max_length=20,
+        choices=Status.choices,
+        default=Status.JARAYONDA,
+        verbose_name=_("Status")
+    )
