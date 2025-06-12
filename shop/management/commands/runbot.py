@@ -15,20 +15,21 @@ user_message_ids = {}
 admin_id = "5867186069"
 
 
-# START komandasi
 @bot.message_handler(commands=['start'])
 def handle_start(message):
     user_id = str(message.from_user.id)
     user_exists = User.objects.filter(user_telegram_id=user_id).first()
 
     if not user_exists:
-        bot.send_message(user_id, "Ismingizni kirting: ")
+        bot.send_message(user_id, "Ismingizni kiriting: ")
         bot.register_next_step_handler(message, get_user_info)
+    elif user_exists.is_superuser:
+        pass
     else:
         keyboard = types.InlineKeyboardMarkup(row_width=1)
         web_app_info = types.WebAppInfo(url="https://chatgpt.com")
         buttons = [
-            types.InlineKeyboardButton("🛒 Buyurtma berish", web_app=web_app_info),
+            types.InlineKeyboardButton("🛒 Mahsulotlar", web_app=web_app_info),
             types.InlineKeyboardButton(" 📞 Bog'lanish", callback_data='support'),
         ]
         keyboard.add(*buttons)
@@ -53,7 +54,7 @@ def handle_inline_buttons(call):
         keyboard = types.InlineKeyboardMarkup(row_width=1)
         web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app")
         buttons = [
-            types.InlineKeyboardButton("🛒 Buyurtma berish", web_app=web_app_info),
+            types.InlineKeyboardButton("🛒 Mahsulotlar", web_app=web_app_info),
             types.InlineKeyboardButton(" 📞 Bog'lanish", callback_data='support'),
         ]
         keyboard.add(*buttons)
@@ -85,7 +86,7 @@ def get_user_phone(message):
             keyboard = types.InlineKeyboardMarkup(row_width=1)
             web_app_info = types.WebAppInfo(url="https://chatgpt.com")
             buttons = [
-                types.InlineKeyboardButton("🛒 Buyurtma berish", web_app=web_app_info),
+                types.InlineKeyboardButton("🛒 Mahsulotlar", web_app=web_app_info),
                 types.InlineKeyboardButton(" 📞 Bog'lanish", callback_data='support'),
             ]
             keyboard.add(*buttons)

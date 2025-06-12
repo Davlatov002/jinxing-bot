@@ -25,11 +25,16 @@ class GetProductSerializer(serializers.ModelSerializer):
         fields = ['name', 'image', 'price', 'sku']
 
 class OrderItemSerializer(serializers.ModelSerializer):
-    product = GetProductSerializer(read_only=True)
+    product = serializers.PrimaryKeyRelatedField(queryset=Product.objects.all())
 
     class Meta:
         model = OrderItem
         fields = '__all__'
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        rep['product'] = GetProductSerializer(instance.product).data
+        return rep
 
 class OrderSerializer(serializers.ModelSerializer):
     order_items = OrderItemSerializer(many=True)
