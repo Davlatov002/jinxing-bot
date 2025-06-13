@@ -123,6 +123,7 @@ CORS_ALLOWED_ORIGINS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://jinxingbot.uz',
+    'https://jinxinguz.netlify.app',
 ]
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
