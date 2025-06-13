@@ -121,6 +121,9 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5050',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://jinxingbot.uz',
+]
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
