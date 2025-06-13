@@ -24,11 +24,10 @@ def handle_start(message):
         bot.send_message(user_id, "Ismingizni kiriting: ")
         bot.register_next_step_handler(message, get_user_info)
     elif user_exists.is_superuser:
-        pass
-        print("siz super adminsiz")
+        bot.send_message(user_id, "Siz adminsiz")
     else:
         keyboard = types.InlineKeyboardMarkup(row_width=1)
-        web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app")
+        web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app/#/")
         buttons = [
             types.InlineKeyboardButton("🛒 Mahsulotlar", web_app=web_app_info),
             types.InlineKeyboardButton(" 📞 Bog'lanish", callback_data='support'),
@@ -53,7 +52,7 @@ def handle_inline_buttons(call):
 
     elif call.data == 'orqaga':
         keyboard = types.InlineKeyboardMarkup(row_width=1)
-        web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app")
+        web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app/#/")
         buttons = [
             types.InlineKeyboardButton("🛒 Mahsulotlar", web_app=web_app_info),
             types.InlineKeyboardButton(" 📞 Bog'lanish", callback_data='support'),
@@ -86,7 +85,7 @@ def get_user_phone(message):
             user.save()
             bot.send_message(message.chat.id, "✅ Ro'yxatdan muvaffaqiyatli o'tdingiz!")
             keyboard = types.InlineKeyboardMarkup(row_width=1)
-            web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app")
+            web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app/#/")
             buttons = [
                 types.InlineKeyboardButton("🛒 Mahsulotlar", web_app=web_app_info),
                 types.InlineKeyboardButton(" 📞 Bog'lanish", callback_data='support'),
