@@ -80,7 +80,8 @@ def get_user_phone(message):
                 first_name=data['name'],
                 last_name=message.from_user.first_name,
                 telegram_username=message.from_user.username,
-                phone_number=message.text
+                phone_number=message.text,
+                username=user_id
             )
             user.save()
             bot.send_message(message.chat.id, "✅ Ro'yxatdan muvaffaqiyatli o'tdingiz!")
