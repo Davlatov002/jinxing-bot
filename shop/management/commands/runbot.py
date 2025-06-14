@@ -3,6 +3,8 @@ import os
 from dotenv import load_dotenv
 import telebot
 from telebot import types
+from telebot.types import ReplyKeyboardMarkup, KeyboardButton, WebAppInfo
+
 from user.models import User
 
 load_dotenv()

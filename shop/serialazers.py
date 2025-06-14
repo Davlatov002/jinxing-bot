@@ -50,6 +50,17 @@ class OrderSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     @transaction.atomic
+    def update(self, instance, validated_data):
+        old_status = instance.status
+        new_status = validated_data.get('status')
+        if old_status != 'bekor qilindi' and new_status == 'bekor qilindi':
+            for order_item in instance.order_items.all():
+                product = order_item.product
+                product.count += order_item.quantity
+                product.save(update_fields=["count"])
+        return super().update(instance, validated_data)
+
+    @transaction.atomic
     def create(self, validated_data):
         items_data = validated_data.pop("order_items")
         if not items_data:
