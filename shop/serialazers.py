@@ -1,6 +1,7 @@
 from .models import Category, Product, ProductHistory, Order, OrderItem
 from django.db import transaction
 from rest_framework import serializers
+from shop.management.commands.runbot import send_telegram_message
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -8,10 +9,15 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = CategorySerializer(read_only=True)
+    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
     class Meta:
         model = Product
         fields = '__all__'
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        rep['category'] = GetProductSerializer(instance.category).data
+        return rep
 
 class ProductHistorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -73,5 +79,23 @@ class OrderSerializer(serializers.ModelSerializer):
         order.order_items.set(order_items)
         order.total_price = total
         order.save()
+
+        user = order.user
+        if user.user_telegram_id:
+            items = order.order_items.all()
+            items_text = "\n".join(
+                [f"📌 {item.product.name} - {item.quantity} dona" for item in items]
+            )
+
+            msg = (
+                f"🔥 <b>Yangi buyurtma!</b>\n"
+                f"👤 <b>Foydalanuvchi:</b> {user.first_name}\n"
+                f"📞 <b>Telefon raqami:</b> {user.phone_number}\n"
+                f"📦 <b>Status:</b> {order.status}\n"
+                f"💰 <b>Umumiy narx:</b> {order.total_price} USD\n"
+                f"🧾 <b>Buyurtma ID:</b> {order.id}\n"
+                f"\n<b>Mahsulotlar:</b>\n{items_text}"
+            )
+            send_telegram_message(msg)
 
         return order

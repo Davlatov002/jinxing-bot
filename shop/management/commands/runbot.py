@@ -10,9 +10,7 @@ BOT_TOKEN = os.getenv('BOT_TOKEN')
 bot = telebot.TeleBot(BOT_TOKEN)
 
 user_data = {}
-shopping_cart = {}
 user_message_ids = {}
-admin_id = "5867186069"
 
 
 @bot.message_handler(commands=['start'])
@@ -24,12 +22,19 @@ def handle_start(message):
         bot.send_message(user_id, "Ismingizni kiriting: ")
         bot.register_next_step_handler(message, get_user_info)
     elif user_exists.is_superuser:
-        bot.send_message(user_id, "Siz adminsiz")
+        keyboard = types.InlineKeyboardMarkup(row_width=1)
+        web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app/#/")
+        buttons = [
+            types.InlineKeyboardButton("🔥 Bosh menyu", web_app=web_app_info),
+        ]
+        keyboard.add(*buttons)
+        bot.send_message(user_id, "Assalomu alaykum!", reply_markup=keyboard)
     else:
         keyboard = types.InlineKeyboardMarkup(row_width=1)
         web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app/#/")
         buttons = [
-            types.InlineKeyboardButton("🛒 Mahsulotlar", web_app=web_app_info),
+            types.InlineKeyboardButton("🔥 Mahsulotlar", web_app=web_app_info),
+            types.InlineKeyboardButton("👤 Siz haqingizda", callback_data='user'),
             types.InlineKeyboardButton(" 📞 Bog'lanish", callback_data='support'),
         ]
         keyboard.add(*buttons)
@@ -54,11 +59,39 @@ def handle_inline_buttons(call):
         keyboard = types.InlineKeyboardMarkup(row_width=1)
         web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app/#/")
         buttons = [
-            types.InlineKeyboardButton("🛒 Mahsulotlar", web_app=web_app_info),
+            types.InlineKeyboardButton("🔥 Mahsulotlar", web_app=web_app_info),
+            types.InlineKeyboardButton("👤 Siz haqingizda", callback_data='user'),
             types.InlineKeyboardButton(" 📞 Bog'lanish", callback_data='support'),
         ]
         keyboard.add(*buttons)
         bot.send_message(user_id, "Assalomu alaykum. Tanlang:", reply_markup=keyboard)
+    elif call.data == 'user':
+        user = User.objects.filter(user_telegram_id=user_id).first()
+        keyboard = types.InlineKeyboardMarkup(row_width=1)
+        buttons = [
+            types.InlineKeyboardButton("🔄 Malumotlarni yangilash", callback_data="update_info"),
+            types.InlineKeyboardButton('⬅️ Orqaga', callback_data="orqaga"),
+        ]
+        keyboard.add(*buttons)
+        bot.send_message(user_id, f"Isim: {user.first_name} \nTelefon raqam: {user.phone_number} ", reply_markup=keyboard)
+    elif call.data == 'update_info':
+        bot.send_message(user_id, "Ismingizni kiriting: ")
+        bot.register_next_step_handler(call.message, get_user_info)
+
+
+def send_telegram_message(message: str):
+    try:
+        users = User.objects.filter(is_superuser=True)
+        keyboard = types.InlineKeyboardMarkup(row_width=1)
+        web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app/#/")
+        buttons = [
+            types.InlineKeyboardButton("🔥 Bosh menyu", web_app=web_app_info),
+        ]
+        keyboard.add(*buttons)
+        for user in users:
+            bot.send_message(user.user_telegram_id, message, parse_mode="HTML", reply_markup=keyboard)
+    except Exception as e:
+        print(f"Telegramga habar yuborishda xatolik: {e}")
 
 
 def get_user_info(message):
@@ -74,20 +107,22 @@ def get_user_phone(message):
     data = user_data.get(user_id)
     if len(message.text) == 13 and message.text[:4] == "+998":
         if data:
-            user = User.objects.create(
+            user, created = User.objects.update_or_create(
                 user_telegram_id=user_id,
-                first_name=data['name'],
-                last_name=message.from_user.first_name,
-                telegram_username=message.from_user.username,
-                phone_number=message.text,
-                username=user_id
+                defaults={
+                    'first_name': data['name'],
+                    'last_name': message.from_user.first_name,
+                    'telegram_username': message.from_user.username,
+                    'phone_number': message.text,
+                    'username': user_id
+                }
             )
-            user.save()
             bot.send_message(message.chat.id, "✅ Ro'yxatdan muvaffaqiyatli o'tdingiz!")
             keyboard = types.InlineKeyboardMarkup(row_width=1)
             web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app/#/")
             buttons = [
-                types.InlineKeyboardButton("🛒 Mahsulotlar", web_app=web_app_info),
+                types.InlineKeyboardButton("🔥 Mahsulotlar", web_app=web_app_info),
+                types.InlineKeyboardButton("👤 Siz haqingizda", callback_data='user'),
                 types.InlineKeyboardButton(" 📞 Bog'lanish", callback_data='support'),
             ]
             keyboard.add(*buttons)

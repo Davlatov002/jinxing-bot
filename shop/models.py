@@ -56,7 +56,6 @@ class Order(models.Model):
         JARAYONDA = 'jarayonda', _('Jarayonda')
         TASDIQLANDI = 'tasdiqlandi', _('Tasdiqlandi')
         BEKOR_QILINDI = 'bekor qilindi', _('Bekor qilindi')
-        YETKAZILDI = 'yetkazildi', _('Yetkazildi')
 
     total_price = models.FloatField(blank=True, null=True, verbose_name=_("Total price"))
     order_items = models.ManyToManyField(OrderItem, verbose_name=_("Order items"))
