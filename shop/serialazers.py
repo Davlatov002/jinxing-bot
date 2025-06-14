@@ -9,15 +9,14 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
+    category = CategorySerializer(read_only=True)
+    category_id = serializers.PrimaryKeyRelatedField(
+        queryset=Category.objects.all(), write_only=True, source='category'
+    )
+
     class Meta:
         model = Product
         fields = '__all__'
-
-    def to_representation(self, instance):
-        rep = super().to_representation(instance)
-        rep['category'] = GetProductSerializer(instance.category).data
-        return rep
 
 class ProductHistorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,16 +30,15 @@ class GetProductSerializer(serializers.ModelSerializer):
         fields = ['name', 'image', 'price', 'sku']
 
 class OrderItemSerializer(serializers.ModelSerializer):
-    product = serializers.PrimaryKeyRelatedField(queryset=Product.objects.all())
+    product = GetProductSerializer(read_only=True)
+    product_id = serializers.PrimaryKeyRelatedField(
+        queryset=Product.objects.all(), write_only=True, source='product'
+    )
 
     class Meta:
         model = OrderItem
         fields = '__all__'
 
-    def to_representation(self, instance):
-        rep = super().to_representation(instance)
-        rep['product'] = GetProductSerializer(instance.product).data
-        return rep
 
 class OrderSerializer(serializers.ModelSerializer):
     order_items = OrderItemSerializer(many=True)
