@@ -2,6 +2,8 @@ from .models import Category, Product, ProductHistory, Order, OrderItem
 from django.db import transaction
 from rest_framework import serializers
 from shop.management.commands.runbot import send_telegram_message
+from user.serialazers import GetUserSerializer
+from user.models import User
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -42,6 +44,10 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
 class OrderSerializer(serializers.ModelSerializer):
     order_items = OrderItemSerializer(many=True)
+    user = GetUserSerializer(read_only=True)
+    user_id = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all(), write_only=True, source='user'
+    )
 
     class Meta:
         model = Order

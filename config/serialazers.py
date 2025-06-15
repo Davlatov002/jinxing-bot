@@ -15,4 +15,5 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
         token['id'] = user.id
         token['telegram_id'] = user.user_telegram_id
+        token['is_superuser'] = user.is_superuser
         return token
