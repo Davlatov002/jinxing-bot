@@ -1,5 +1,7 @@
 from django.core.management.base import BaseCommand
 import os
+
+from django.urls import exceptions
 from dotenv import load_dotenv
 import telebot
 from telebot import types
@@ -105,7 +107,10 @@ def send_telegram_message(message: str):
         ]
         keyboard.add(*buttons)
         for user in users:
-            bot.send_message(user.user_telegram_id, message, parse_mode="HTML", reply_markup=keyboard)
+            try:
+                bot.send_message(user.user_telegram_id, message, parse_mode="HTML", reply_markup=keyboard)
+            except exceptions:
+                pass
     except Exception as e:
         print(f"Telegramga habar yuborishda xatolik: {e}")
 
