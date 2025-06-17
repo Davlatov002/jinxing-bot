@@ -67,8 +67,11 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-        'PAGE_SIZE': 20,
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+        'PAGE_SIZE': 10,
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.OrderingFilter',
+    ]
 }
 
 SWAGGER_SETTINGS = {
@@ -89,8 +92,8 @@ SWAGGER_SETTINGS = {
         'drf_yasg.inspectors.SimpleFieldInspector',
         'drf_yasg.inspectors.StringDefaultFieldInspector',
     ],
-    'USE_HTTPS': True,
-    'DEFAULT_API_URL': 'https://jinxingbot.uz',
+    # 'USE_HTTPS': True,
+    # 'DEFAULT_API_URL': 'https://jinxingbot.uz',
 }
 
 ROOT_URLCONF = 'config.urls'

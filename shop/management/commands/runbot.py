@@ -58,12 +58,13 @@ def handle_inline_buttons(call):
         menu_keyboard.add(types.InlineKeyboardButton('⬅️ orqaga', callback_data="orqaga"))
         message_text = (
             "📞 <b>Aloqa uchun ma'lumotlar:</b>\n"
-            "━━━━━━━━━━━━━━━━━━━━\n"
-            "📱 <b>Telefon:</b> +998 99 977 49 77\n"
-            "💬 <b>Telegram:</b> <a href='https://t.me/davlatov02'>@davlatov02</a>\n\n"
+            "━━━━━━━━━━━━━━━━━━\n"
+            "📱 <b>Telefon:</b> +998999774977\n"
+            "📱 <b>Telefon:</b> +998770677717\n"
+            "💬 <b>Telegram:</b> <a href='https://t.me/Umarhon999774977'>@Umarhon999774977</a>\n\n"
             "📍 <b>Manzil:</b>\n"
             "<a href='https://www.google.com/maps/place//@41.00921,71.667123,15z'>📌 Xaritada ko‘rish (Google Maps)</a>\n"
-            "━━━━━━━━━━━━━━━━━━━━"
+            "━━━━━━━━━━━━━━━━━━"
         )
 
         bot.send_message(

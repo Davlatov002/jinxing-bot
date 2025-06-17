@@ -1,22 +1,28 @@
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, filters
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from django.db.models import Sum, ExpressionWrapper, F, FloatField
 from rest_framework.views import APIView
 
 from shop.models import Order, Product
+from shop.pagination import TenItemPagination
 from .models import User
 from .serialazers import UserSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAdminUser]
+    pagination_class = TenItemPagination
+    filter_backends = [filters.OrderingFilter]
+    ordering_fields = ['created_at', 'id']
+    ordering = ['-created_at']
+    search_fields = ('first_name', 'phone_number')
 
     def list(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        user_data = []
+        queryset = self.paginate_queryset(self.get_queryset())  # <- sahifalash
 
+        user_data = []
         for user in queryset:
             orders = Order.objects.filter(user=user, status='tasdiqlandi')
             orders_count = orders.count()
@@ -30,7 +36,7 @@ class UserViewSet(viewsets.ModelViewSet):
                 "orders_amount": orders_amount,
             })
 
-        return Response(user_data)
+        return self.get_paginated_response(user_data)
 
 
 class UserStatisticsAPIView(APIView):
