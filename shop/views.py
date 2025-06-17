@@ -33,8 +33,8 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
     permission_classes = [permissions.IsAuthenticated]
-    filterset_fields = ('user',)
     pagination_class = TenItemPagination
-    filter_backends = [filters.OrderingFilter]
-    ordering_fields = ['created_at', 'id']
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    filterset_fields = ['user']
+    ordering_fields = ['created_at', 'id', 'total_price']  # keraklisini qo‘shing
     ordering = ['-created_at']
