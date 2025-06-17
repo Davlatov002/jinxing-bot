@@ -92,8 +92,8 @@ SWAGGER_SETTINGS = {
         'drf_yasg.inspectors.SimpleFieldInspector',
         'drf_yasg.inspectors.StringDefaultFieldInspector',
     ],
-    # 'USE_HTTPS': True,
-    # 'DEFAULT_API_URL': 'https://jinxingbot.uz',
+    'USE_HTTPS': True,
+    'DEFAULT_API_URL': 'https://jinxingbot.uz',
 }
 
 ROOT_URLCONF = 'config.urls'
