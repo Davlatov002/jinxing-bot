@@ -10,6 +10,13 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = '__all__'
 
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if obj.image and request:
+            url = request.build_absolute_uri(obj.image.url)
+            return url.replace('http://', 'https://')
+        return None
+
 class ProductSerializer(serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
     category_id = serializers.PrimaryKeyRelatedField(
@@ -19,6 +26,13 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = '__all__'
+
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if obj.image and request:
+            url = request.build_absolute_uri(obj.image.url)
+            return url.replace('http://', 'https://')
+        return None
 
 class ProductHistorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,6 +44,13 @@ class GetProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ['name', 'image', 'price', 'sku']
+
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if obj.image and request:
+            url = request.build_absolute_uri(obj.image.url)
+            return url.replace('http://', 'https://')
+        return None
 
 class OrderItemSerializer(serializers.ModelSerializer):
     product = GetProductSerializer(read_only=True)

@@ -16,13 +16,6 @@ class Category(models.Model):
         verbose_name = _("Bo'lim")
         verbose_name_plural = _("Bo'limlar")
 
-    def get_image(self, obj):
-        request = self.context.get('request')
-        if obj.image and request:
-            url = request.build_absolute_uri(obj.image.url)
-            return url.replace('http://', 'https://')
-        return None
-
 
 class Product(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Product name"))
@@ -41,13 +34,6 @@ class Product(models.Model):
     class Meta:
         verbose_name = _("Maxsulot")
         verbose_name_plural = _("Maxsulotlar")
-
-    def get_image(self, obj):
-        request = self.context.get('request')
-        if obj.image and request:
-            url = request.build_absolute_uri(obj.image.url)
-            return url.replace('http://', 'https://')
-        return None
 
 
 class ProductHistory(models.Model):
