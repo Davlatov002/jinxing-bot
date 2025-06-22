@@ -26,7 +26,7 @@ def handle_start(message):
         bot.register_next_step_handler(message, get_user_info)
     elif user_exists.is_superuser:
         keyboard = types.InlineKeyboardMarkup(row_width=1)
-        web_app_info = types.WebAppInfo(url="https://jinxingbot.uz/")
+        web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app/#/")
         buttons = [
             types.InlineKeyboardButton("🔥 Bosh menyu", web_app=web_app_info),
         ]
@@ -34,7 +34,7 @@ def handle_start(message):
         bot.send_message(user_id, "Assalomu alaykum!", reply_markup=keyboard)
     else:
         keyboard = types.InlineKeyboardMarkup(row_width=1)
-        web_app_info = types.WebAppInfo(url="https://jinxingbot.uz/")
+        web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app/#/")
         buttons = [
             types.InlineKeyboardButton("🔥 Mahsulotlar", web_app=web_app_info),
             types.InlineKeyboardButton("👤 Siz haqingizda", callback_data='user'),
@@ -76,7 +76,7 @@ def handle_inline_buttons(call):
 
     elif call.data == 'orqaga':
         keyboard = types.InlineKeyboardMarkup(row_width=1)
-        web_app_info = types.WebAppInfo(url="https://jinxingbot.uz/")
+        web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app/#/")
         buttons = [
             types.InlineKeyboardButton("🔥 Mahsulotlar", web_app=web_app_info),
             types.InlineKeyboardButton("👤 Siz haqingizda", callback_data='user'),
@@ -102,7 +102,7 @@ def send_telegram_message(message: str):
     try:
         users = User.objects.filter(is_superuser=True)
         keyboard = types.InlineKeyboardMarkup(row_width=1)
-        web_app_info = types.WebAppInfo(url="https://jinxingbot.uz/")
+        web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app/#/")
         buttons = [
             types.InlineKeyboardButton("🔥 Bosh menyu", web_app=web_app_info),
         ]
@@ -141,7 +141,7 @@ def get_user_phone(message):
             )
             bot.send_message(message.chat.id, "✅ Ro'yxatdan muvaffaqiyatli o'tdingiz!")
             keyboard = types.InlineKeyboardMarkup(row_width=1)
-            web_app_info = types.WebAppInfo(url="https://jinxingbot.uz/")
+            web_app_info = types.WebAppInfo(url="https://jinxinguz.netlify.app/#/")
             buttons = [
                 types.InlineKeyboardButton("🔥 Mahsulotlar", web_app=web_app_info),
                 types.InlineKeyboardButton("👤 Siz haqingizda", callback_data='user'),
