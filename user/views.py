@@ -56,21 +56,41 @@ class UserStatisticsAPIView(APIView):
                 )
             )
         )['total'] or 0
-
+        product_total_amount_approved = products.aggregate(
+            total=Sum(
+                ExpressionWrapper(
+                    F('price_received') * F('count'),
+                    output_field=FloatField()
+                )
+            )
+        )['total'] or 0
         orders_count_approved = orders.filter(status='tasdiqlandi').count()
         orders_count_in_process = orders.filter(status='jarayonda').count()
         orders_count_canceled = orders.filter(status='bekor qilindi').count()
         orders_amount = orders.filter(status='tasdiqlandi').aggregate(Sum('total_price'))['total_price__sum'] or 0
+        product_total_net_profit = product_total_amount - product_total_amount_approved
 
+        orders = Order.objects.filter(status='tasdiqlandi').prefetch_related('order_items__product')
+        orders_amount_approved = 0
+        for order in orders:
+            for item in order.order_items.all():
+                if item.product and item.product.price_received and item.quantity:
+                    orders_amount_approved += item.product.price_received * item.quantity
+        net_profit = orders_amount - orders_amount_approved
         results = {
             "user_count": users,
             "product_type_count": product_type_count,
             "product_count": product_count,
             "product_total_amount": product_total_amount,
+            "product_total_amount_approved": product_total_amount_approved,
+            "product_total_net_profit": product_total_net_profit,
             "orders_count_approved": orders_count_approved,
             "orders_count_in_process": orders_count_in_process,
             "orders_count_canceled": orders_count_canceled,
-            "orders_approved_amount": orders_amount,
+            "orders_amount": orders_amount,
+            "orders_amount_approved": orders_amount_approved,
+            "net_profit": net_profit,
+
         }
 
         return Response(results)

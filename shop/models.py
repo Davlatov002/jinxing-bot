@@ -20,6 +20,7 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Product name"))
     price = models.FloatField(blank=True, null=True, verbose_name=_("Product price"))
+    price_received = models.FloatField(blank=True, null=True, verbose_name=_("Product price received"))
     sku = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Product SKU"))
     description = models.TextField(blank=True, null=True, verbose_name=_("Product description"))
     count = models.IntegerField(blank=True, null=True, verbose_name=_("Product count"))

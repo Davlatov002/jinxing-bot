@@ -34,6 +34,45 @@ msgstr ""
 msgid "Foydalanuvchilar"
 msgstr ""
 
+msgid "Product price received"
+msgstr "Maxsulot olingan narxi"
+
+msgid "User First Name"
+msgstr "Foydalanuvchi Ismi"
+
+msgid "Total price"
+msgstr "Ummumiy summa"
+
+msgid "Status"
+msgstr "Holat"
+
+msgid "Product"
+msgstr "Maxsulot"
+
+msgid "Product quantity"
+msgstr "Maxsulot soni"
+
+msgid "Product price"
+msgstr "Maxsulot narxi"
+
+msgid "Category name"
+msgstr "Bo'lim nomi"
+
+msgid "Product count"
+msgstr "Maxsulot soni"
+
+msgid "Product category"
+msgstr "Maxsulot bo'limi"
+
+msgid "Product description"
+msgstr "Maxsulot tavsifi"
+
+msgid "Product SKU"
+msgstr "SKU raqami"
+
+msgid "Product name"
+msgstr "Maxsulot nomi"
+
 msgid "History"
 msgstr "Tarix"
 
