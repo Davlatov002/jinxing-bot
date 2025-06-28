@@ -38,13 +38,30 @@ class Product(models.Model):
 
 
 class ProductHistory(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name=_("Product"))
-    count = models.IntegerField(blank=True, null=True, verbose_name=_("Product count"))
+    class Status(models.TextChoices):
+        YARATILDI = 'yaratildi', _('Yaratildi')
+        QOSHILDI = "qo'shildi", _("Qo'shildi")
+        AYRILDI = 'ayrildi', _('Ayrildi')
+    name = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Product name"))
+    price_received = models.FloatField(blank=True, null=True, verbose_name=_("Product price received"))
     price = models.FloatField(blank=True, null=True, verbose_name=_("Product price"))
+    count = models.IntegerField(blank=True, null=True, verbose_name=_("Product count"))
+    category = models.CharField(max_length=255, null=True, blank=True, verbose_name=_("Product category"))
     sku = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Product SKU"))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
-    updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Updated at"))
+    status = models.CharField(
+        max_length=20,
+        choices=Status.choices,
+        default=Status.YARATILDI,
+        verbose_name=_("Status")
+    )
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _("Maxsulot tarixi")
+        verbose_name_plural = _("Maxsulotlar tarixi")
 
 class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name=_("Product"))
