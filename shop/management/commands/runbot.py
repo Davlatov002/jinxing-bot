@@ -114,7 +114,7 @@ def handle_inline_buttons(call):
             header_fill = PatternFill(start_color="4F81BD", end_color="4F81BD", fill_type="solid")
             center_align = Alignment(horizontal="center", vertical="center")
 
-            headers = ['#', 'Buyurtmachi', 'Buyurmachi telefon raqami', 'Buyurtma holati', 'Mahsulot nomi', 'SKU', 'Bo\'lim', 'Soni', 'Xarajat narxi', 'Sotuv narxi',
+            headers = ['#', 'Buyurtmachi', 'Buyurmachi telefon raqami', 'Buyurtma holati', 'Mahsulot nomi', 'SKU', 'Bo\'lim', 'Soni', 'Xarajat narxi(dona)', 'Sotuv narxi(dona)',
                        'Jami narx', 'Yaratilgan vaqt']
             ws.append(headers)
             for cell in ws["1:1"]:
@@ -131,7 +131,6 @@ def handle_inline_buttons(call):
 
             total_revenue = 0
             total_cost = 0
-            row = 2
             counter = 1
 
             for order in orders:
@@ -259,7 +258,7 @@ def handle_inline_buttons(call):
             for month, orders_list in monthly_data.items():
                 ws = wb.create_sheet(title=month)
                 headers = ['#', 'Buyurtmachi', 'Buyurmachi telefon raqami', 'Buyurtma holati', 'Mahsulot nomi', 'SKU',
-                           'Bo\'lim', 'Soni', 'Xarajat narxi', 'Sotuv narxi', 'Jami narx', 'Yaratilgan vaqt']
+                           'Bo\'lim', 'Soni', 'Xarajat narxi(dona)', 'Sotuv narxi(dona)', 'Jami narx', 'Yaratilgan vaqt']
                 ws.append(headers)
 
                 for cell in ws["1:1"]:
