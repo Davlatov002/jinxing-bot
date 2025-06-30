@@ -182,7 +182,7 @@ def handle_inline_buttons(call):
                 for item in order.order_items.all():
                     product = item.product
                     quantity = abs(item.quantity or 0)
-                    sell_price = abs(item.price or 0)
+                    sell_price = abs(product.price or 0)
                     received_price = abs(product.price_received or 0)
 
                     total_price = sell_price * quantity
