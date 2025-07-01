@@ -184,6 +184,12 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 # Til sozlamalari
 
+# Yuklanayotgan umumiy so‘rov hajmi (masalan: JSON + fayl) limiti
+DATA_UPLOAD_MAX_MEMORY_SIZE = 52428800  # 50 MB
+
+# Faylni xotirada saqlashdan oldin ruxsat berilgan maksimal fayl hajmi
+FILE_UPLOAD_MAX_MEMORY_SIZE = 52428800  # 50 MB
+
 LANGUAGE_CODE = 'uz'
 
 LANGUAGES = [
